@@ -2,14 +2,20 @@
 :host{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 .map{
   margin-bottom: 15px;
    height: 500px;
 }
 .address{
-  background-color: aqua;
   height: 70px;
-  color: black;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  &__title{
+    font-weight: 600;
+    font-size: 18px;
+  }
 }
+

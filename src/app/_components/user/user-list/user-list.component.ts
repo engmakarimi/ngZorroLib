@@ -154,13 +154,13 @@ export class UserListComponent implements OnInit {
   //#endregion
 
 
-  createComponentModal(data:any): void {
+  createComponentModal(data:User): void {
+    if(data){
     const modal = this.modal.create({
 
       nzContent: UserLocationComponent,
       nzViewContainerRef: this.viewContainerRef,
       nzComponentParams: {
-
         data:data
       },
       nzWidth:'700px',
@@ -168,10 +168,11 @@ export class UserListComponent implements OnInit {
       // nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
     });
     const instance = modal.getContentComponent();
-    modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
+    // modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
     // Return a result when closed
-    modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
+    // modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
 
   }
+}
 }
 

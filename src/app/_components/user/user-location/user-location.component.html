@@ -1,6 +1,7 @@
 <div class="map">
-  <map></map>
+  <map [lat]='data.address.geo?.lat' [long]='data.address.geo?.lng'></map>
 </div>
 <div class="address">
-
+<p><span class="address__title">Address: </span>{{address}}</p>
+<p><span class="address__title"> Zip Code:</span> {{data.address.zipcode}}</p>
 </div>
