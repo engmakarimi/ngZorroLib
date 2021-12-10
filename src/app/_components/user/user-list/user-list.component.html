@@ -1,0 +1,89 @@
+<div>
+  <nz-input-group [nzSuffix]="suffixIconSearch" class="input-search">
+    <input
+      type="text"
+      nz-input
+      placeholder="input search text"
+      [formControl]="searchControl"
+    />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+</div>
+<nz-table
+  #basicTable
+  nzShowPagination
+  nzShowSizeChanger
+  [nzData]="listOfCurrentPageData"
+  class="table"
+>
+  <thead>
+    <tr>
+      <th
+        *ngFor="let column of listOfColumns; trackBy: trackByName"
+        [(nzSortOrder)]="column.sortOrder"
+        [nzSortFn]="column.sortFn"
+        nzCustomFilter
+      >
+        {{ column.name }}
+
+        <nz-filter-trigger
+          [(nzVisible)]="column.searchVisible"
+          [nzActive]="column.searchValue.length > 0"
+          [nzDropdownMenu]="menu"
+        >
+          <i nz-icon nzType="search"></i>
+        </nz-filter-trigger>
+
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <div class="ant-table-filter-dropdown">
+            <div class="search-box">
+              <input
+                type="text"
+                nz-input
+                placeholder="Search {{ column.name }}"
+                [(ngModel)]="column.searchValue"
+              />
+              <button
+                nz-button
+                nzSize="small"
+                nzType="primary"
+                (click)="search(column)"
+                class="search-button"
+              >
+                Search
+              </button>
+              <button nz-button nzSize="small" (click)="reset(column)">
+                Reset
+              </button>
+            </div>
+          </div>
+        </nz-dropdown-menu>
+      </th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.username }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.phone }}</td>
+      <td>
+        <a href="{{ data.website }}">{{ data.website }}</a>
+      </td>
+      <td>{{ data.company.name }}</td>
+      <td>
+        <button
+          (click)="createComponentModal(data)"
+          nz-button
+          nzShape="circle"
+          nzType="default"
+        >
+        <i nz-icon nzType="search" ></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
