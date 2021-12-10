@@ -6,4 +6,5 @@ export interface ColumnItem<T> {
   sortFn: NzTableSortFn<T> | null;
   searchVisible :boolean;
   searchValue:string;
+  icon:string;
 }

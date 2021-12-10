@@ -18,7 +18,7 @@
   [nzData]="listOfCurrentPageData"
   class="table"
 >
-  <thead>
+  <thead class="thead">
     <tr>
       <th
         *ngFor="let column of listOfColumns; trackBy: trackByName"
@@ -26,7 +26,8 @@
         [nzSortFn]="column.sortFn"
         nzCustomFilter
       >
-        {{ column.name }}
+
+      <i *ngIf="column.icon" class='icon' class={{column.icon}}></i>  {{ column.name }}
 
         <nz-filter-trigger
           [(nzVisible)]="column.searchVisible"
@@ -61,7 +62,7 @@
           </div>
         </nz-dropdown-menu>
       </th>
-      <th>Location</th>
+      <th> <i class='icon icon-basic-compass'></i>Location</th>
     </tr>
   </thead>
   <tbody>
@@ -79,9 +80,9 @@
           (click)="createComponentModal(data)"
           nz-button
           nzShape="circle"
-          nzType="default"
+          nzType="text"
         >
-        <i nz-icon nzType="search" ></i>
+        <i class="table__icon icon-basic-geolocalize-05"></i>
         </button>
       </td>
     </tr>

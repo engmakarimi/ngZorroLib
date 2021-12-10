@@ -13,9 +13,15 @@
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 1px;
+  margin-bottom: 5px;
   &__title{
     font-weight: 600;
     font-size: 18px;
+  }
+  &__icon{
+    margin: 5PX;
+    font-weight: 900;
+    font-size: 22px;
   }
 }
 

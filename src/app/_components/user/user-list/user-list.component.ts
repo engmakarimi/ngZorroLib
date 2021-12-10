@@ -23,6 +23,7 @@ export class UserListComponent implements OnInit {
     {
       name: 'Name',
       sortOrder: null,
+      icon: '',
       sortFn: (a: User, b: User) => a.name.localeCompare(b.name),
       searchVisible: false,
       searchValue: '',
@@ -31,6 +32,7 @@ export class UserListComponent implements OnInit {
     {
       name: 'Username',
       sortOrder: null,
+      icon: '',
       sortFn: (a: User, b: User) => a.username.localeCompare(b.username),
       searchVisible: false,
       searchValue: '',
@@ -38,6 +40,7 @@ export class UserListComponent implements OnInit {
     {
       name: 'Email',
       sortOrder: null,
+      icon: 'icon-basic-mail',
       sortFn: (a: User, b: User) => a.email.localeCompare(b.email),
       searchVisible: false,
       searchValue: '',
@@ -45,6 +48,7 @@ export class UserListComponent implements OnInit {
     {
       name: 'Phone',
       sortOrder: null,
+      icon: 'icon-basic-smartphone',
       sortFn: (a: User, b: User) => a.phone.localeCompare(b.phone),
       searchVisible: false,
       searchValue: '',
@@ -53,6 +57,7 @@ export class UserListComponent implements OnInit {
     {
       name: 'Website',
       sortOrder: null,
+      icon: 'icon-basic-world',
       sortFn: (a: User, b: User) => a.website.localeCompare(b.website),
       searchVisible: false,
       searchValue: '',
@@ -60,6 +65,7 @@ export class UserListComponent implements OnInit {
     {
       name: 'Company',
       sortOrder: null,
+      icon: 'icon-basic-home',
       sortFn: (a: User, b: User) =>
         a.company.name.localeCompare(b.company.name),
       searchVisible: false,
@@ -153,26 +159,26 @@ export class UserListComponent implements OnInit {
   }
   //#endregion
 
-
-  createComponentModal(data:User): void {
-    if(data){
-    const modal = this.modal.create({
-
-      nzContent: UserLocationComponent,
-      nzViewContainerRef: this.viewContainerRef,
-      nzComponentParams: {
-        data:data
-      },
-      nzWidth:'700px',
-      nzFooter:null,
-      // nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
-    });
-    const instance = modal.getContentComponent();
-    // modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
-    // Return a result when closed
-    // modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
-
+  createComponentModal(data: User): void {
+    if (data) {
+      const modal = this.modal.create({
+        nzContent: UserLocationComponent,
+        nzViewContainerRef: this.viewContainerRef,
+        nzComponentParams: {
+          data: data,
+        },
+        nzStyle: {
+          'padding': '15px',
+          
+        },
+        nzWidth: '700px',
+        nzFooter: null,
+        // nzOnOk: () => new Promise(resolve => setTimeout(resolve, 1000)),
+      });
+      const instance = modal.getContentComponent();
+      // modal.afterOpen.subscribe(() => console.log('[afterOpen] emitted!'));
+      // Return a result when closed
+      // modal.afterClose.subscribe(result => console.log('[afterClose] The result is:', result));
+    }
   }
 }
-}
-

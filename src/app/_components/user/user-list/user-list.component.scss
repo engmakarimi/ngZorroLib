@@ -20,6 +20,15 @@
   width: 30%;
 }
 .table {
-   margin: 10px 16px;
+   margin: 10px 20px;
+   &__icon{
+     font-size: 25px;
+     font-weight: 900;
+   }
+}
+.icon{
+  margin:3px;
+
+
 }
 
